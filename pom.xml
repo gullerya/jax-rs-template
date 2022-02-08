@@ -185,13 +185,6 @@
 
 	<profiles>
 		<profile>
-			<id>java8</id>
-			<properties>
-				<jdk.version>8</jdk.version>
-			</properties>
-		</profile>
-
-		<profile>
 			<id>java11</id>
 			<properties>
 				<jdk.version>11</jdk.version>
