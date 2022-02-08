@@ -1,0 +1,20 @@
+#
+#   build
+#
+FROM maven:3.8.4-openjdk-11-slim as build
+
+COPY src/ /home/app/src
+COPY pom.xml /home/app/
+
+RUN mvn -q -f /home/app/pom.xml clean package -Pjava11 -Dmaven.test.skip=true
+
+#
+#   pack with Wildfly
+#
+FROM jboss/wildfly:25.0.0.Final
+
+COPY --from=build /home/app/target/jax-rs-template-1.0.0/ /opt/jboss/wildfly/standalone/deployments/app.war/
+RUN touch /opt/jboss/wildfly/standalone/deployments/app.war.dodeploy
+
+EXPOSE 8080
+ENTRYPOINT ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0"]
