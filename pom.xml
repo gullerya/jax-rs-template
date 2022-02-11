@@ -161,25 +161,15 @@
 						</execution>
 					</executions>
 				</plugin>
-
-				<!--DEPLOY-->
-				<plugin>
-					<artifactId>jetty-maven-plugin</artifactId>
-					<groupId>org.eclipse.jetty</groupId>
-					<version>${jetty}</version>
-				</plugin>
-				<plugin>
-					<artifactId>tomcat7-maven-plugin</artifactId>
-					<groupId>org.apache.tomcat.maven</groupId>
-					<version>2.3-SNAPSHOT</version>
-					<configuration>
-						<path>/</path>
-					</configuration>
-				</plugin>
 			</plugins>
 		</pluginManagement>
 
 		<plugins>
+			<plugin>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<groupId>org.eclipse.jetty</groupId>
+				<version>${jetty}</version>
+			</plugin>
 		</plugins>
 	</build>
 
