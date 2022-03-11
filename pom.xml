@@ -11,7 +11,7 @@
 
 	<properties>
 		<jpa>2.2</jpa>
-		<slf4j>1.7.35</slf4j>
+		<slf4j>1.7.36</slf4j>
 		<log4j>2.17.1</log4j>
 
 		<!--BUILD-->
@@ -23,7 +23,7 @@
 		<maven-war-plugin>3.3.2</maven-war-plugin>
 
 		<!--DEPLOY-->
-		<jetty>11.0.7</jetty>
+		<jetty>11.0.8</jetty>
 
 		<!--QUALITY-->
 		<skipTests>true</skipTests>
@@ -61,13 +61,13 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>5.3.15</version>
+			<version>5.3.16</version>
 		</dependency>
 
 		<dependency>
 			<artifactId>jaxrs-ri</artifactId>
 			<groupId>org.glassfish.jersey.bundles</groupId>
-			<version>3.0.3</version>
+			<version>3.0.4</version>
 			<scope>runtime</scope>
 		</dependency>
 

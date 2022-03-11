@@ -19,3 +19,9 @@ This project is a copy-pasteable template of a pure JAX-RS application, includin
 - Jetty
 - Tomcat
 - Wildfly (WIP, not yet working)
+
+## Running dev (with Jetty plugin, not in Docker)
+In order to start the app in a debuggable fashion as a simple Java process,
+this project uses Jetty plugin.
+
+Execute `mvn jetty:run`

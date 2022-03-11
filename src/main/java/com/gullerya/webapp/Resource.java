@@ -18,7 +18,7 @@ public class Resource implements AppResource {
 	public Response getSomething() {
 		return Response
 				.status(Response.Status.OK.getStatusCode(), null)
-				.entity(new Date().toString())
+				.entity(new Date())
 				.build();
 	}
 
