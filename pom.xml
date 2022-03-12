@@ -13,6 +13,7 @@
 		<jpa>2.2</jpa>
 		<slf4j>1.7.36</slf4j>
 		<log4j>2.17.1</log4j>
+		<jersey>3.0.4</jersey>
 
 		<!--BUILD-->
 		<jdk.version>17</jdk.version>
@@ -41,8 +42,8 @@
 			<version>${slf4j}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-slf4j-impl</artifactId>
+			<groupId>org.apache.logging.log4j</groupId>
 			<version>${log4j}</version>
 			<scope>runtime</scope>
 		</dependency>
@@ -51,7 +52,7 @@
 			<artifactId>jakarta.servlet-api</artifactId>
 			<groupId>jakarta.servlet</groupId>
 			<version>5.0.0</version>
-<!--			<scope>provided</scope>-->
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<artifactId>jakarta.ws.rs-api</artifactId>
@@ -59,16 +60,28 @@
 			<version>3.0.0</version>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
+			<groupId>org.springframework</groupId>
 			<version>5.3.16</version>
 		</dependency>
 
 		<dependency>
-			<artifactId>jaxrs-ri</artifactId>
-			<groupId>org.glassfish.jersey.bundles</groupId>
-			<version>3.0.4</version>
+			<artifactId>jersey-container-servlet</artifactId>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<version>${jersey}</version>
 			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<artifactId>jersey-hk2</artifactId>
+			<groupId>org.glassfish.jersey.inject</groupId>
+			<version>${jersey}</version>
+			<scope>runtime</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>aopalliance-repackaged</artifactId>
+					<groupId>org.glassfish.hk2.external</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<!--TESTS-->

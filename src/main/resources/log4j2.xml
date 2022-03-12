@@ -8,11 +8,42 @@
 		<Console name="console" target="SYSTEM_OUT" follow="true">
 			<PatternLayout pattern="${LOG_PATTERN}"/>
 		</Console>
+
+		<RollingFile name="app"
+		             fileName="logs/app.log"
+		             filePattern="logs/app-%d{yyyy-MM-dd}-%i.log">
+			<PatternLayout pattern="${LOG_PATTERN}"/>
+			<Policies>
+				<OnStartupTriggeringPolicy/>
+				<SizeBasedTriggeringPolicy size="20MB"/>
+			</Policies>
+		</RollingFile>
+		<RollingFile name="access"
+		             fileName="logs/access.log"
+		             filePattern="logs/access-%d{yyyy-MM-dd}-%i.log">
+			<PatternLayout pattern="${LOG_PATTERN}"/>
+			<Policies>
+				<OnStartupTriggeringPolicy/>
+				<SizeBasedTriggeringPolicy size="20MB"/>
+			</Policies>
+		</RollingFile>
+
+		<!--asyncs-->
+		<Async name="async-app">
+			<AppenderRef ref="app"/>
+		</Async>
+		<Async name="async-access">
+			<AppenderRef ref="access"/>
+		</Async>
 	</Appenders>
 
 	<Loggers>
 		<Root level="info">
 			<AppenderRef ref="console"/>
+			<AppenderRef ref="async-app"/>
 		</Root>
+		<Logger name="com.gullerya.webapp.JaxRSFilter" level="info">
+			<AppenderRef ref="async-access"/>
+		</Logger>
 	</Loggers>
 </Configuration>
