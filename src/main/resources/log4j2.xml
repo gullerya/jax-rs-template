@@ -17,6 +17,7 @@
 				<OnStartupTriggeringPolicy/>
 				<SizeBasedTriggeringPolicy size="20MB"/>
 			</Policies>
+			<DefaultRolloverStrategy max="3"/>
 		</RollingFile>
 		<RollingFile name="access"
 		             fileName="logs/access.log"
@@ -26,6 +27,7 @@
 				<OnStartupTriggeringPolicy/>
 				<SizeBasedTriggeringPolicy size="20MB"/>
 			</Policies>
+			<DefaultRolloverStrategy max="3"/>
 		</RollingFile>
 
 		<!--asyncs-->
