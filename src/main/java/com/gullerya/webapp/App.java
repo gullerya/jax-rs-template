@@ -20,7 +20,7 @@ public class App extends Application implements ServletContextListener {
 
 	public App() {
 		logger.info("constructing the web app");
-		ApplicationContext applicationContext = new AnnotationConfigApplicationContext("com.gullerya.webapp");
+		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(App.class.getPackageName());
 		Map<String, AppResource> resources = applicationContext.getBeansOfType(AppResource.class);
 		Map<String, ContainerRequestFilter> requestFilters = applicationContext
 				.getBeansOfType(ContainerRequestFilter.class);
