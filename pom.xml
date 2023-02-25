@@ -10,29 +10,31 @@
 	<packaging>war</packaging>
 
 	<properties>
-		<jpa>2.2</jpa>
-		<slf4j>1.7.36</slf4j>
-		<log4j>2.17.1</log4j>
-		<jersey>3.0.4</jersey>
+		<servlet-api>6.0.0</servlet-api>
+		<rs-api>3.1.0</rs-api>
+		<slf4j>2.0.6</slf4j>
+		<log4j>2.20.0</log4j>
+		<jersey>3.1.1</jersey>
+		<!-- <jpa>2.2</jpa> -->
+		<spring>6.0.5</spring>
 
 		<!--BUILD-->
 		<jdk.version>17</jdk.version>
-		<maven-clean-plugin>3.1.0</maven-clean-plugin>
-		<maven-resources-plugin>3.2.0</maven-resources-plugin>
-		<maven-compiler-plugin>3.8.1</maven-compiler-plugin>
-		<maven-install-plugin>3.0.0-M1</maven-install-plugin>
+		<maven-clean-plugin>3.2.0</maven-clean-plugin>
+		<maven-resources-plugin>3.3.0</maven-resources-plugin>
+		<maven-compiler-plugin>3.10.1</maven-compiler-plugin>
+		<maven-install-plugin>3.1.0</maven-install-plugin>
 		<maven-war-plugin>3.3.2</maven-war-plugin>
 
 		<!--DEPLOY-->
-		<jetty>11.0.8</jetty>
+		<jetty>11.0.13</jetty>
 
 		<!--QUALITY-->
 		<skipTests>true</skipTests>
-		<log4j-slf4j-impl>2.17.0</log4j-slf4j-impl>
-		<junit>5.8.2</junit>
+		<junit>5.9.2</junit>
 		<spotbugs>4.4.2</spotbugs>
-		<maven-surefire-plugin>3.0.0-M5</maven-surefire-plugin>
-		<jacoco-maven-plugin>0.8.7</jacoco-maven-plugin>
+		<maven-surefire-plugin>3.0.0-M9</maven-surefire-plugin>
+		<jacoco-maven-plugin>0.8.8</jacoco-maven-plugin>
 	</properties>
 
 	<dependencies>
@@ -51,18 +53,18 @@
 		<dependency>
 			<artifactId>jakarta.servlet-api</artifactId>
 			<groupId>jakarta.servlet</groupId>
-			<version>5.0.0</version>
+			<version>${servlet-api}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<artifactId>jakarta.ws.rs-api</artifactId>
 			<groupId>jakarta.ws.rs</groupId>
-			<version>3.0.0</version>
+			<version>${rs-api}</version>
 		</dependency>
 		<dependency>
 			<artifactId>spring-context</artifactId>
 			<groupId>org.springframework</groupId>
-			<version>5.3.16</version>
+			<version>${spring}</version>
 		</dependency>
 
 		<dependency>
@@ -186,13 +188,6 @@
 	</build>
 
 	<profiles>
-		<profile>
-			<id>java11</id>
-			<properties>
-				<jdk.version>11</jdk.version>
-			</properties>
-		</profile>
-
 		<profile>
 			<id>coverage</id>
 			<build>

@@ -22,8 +22,10 @@ public class App extends Application implements ServletContextListener {
 		logger.info("constructing the web app");
 		ApplicationContext applicationContext = new AnnotationConfigApplicationContext("com.gullerya.webapp");
 		Map<String, AppResource> resources = applicationContext.getBeansOfType(AppResource.class);
-		Map<String, ContainerRequestFilter> requestFilters = applicationContext.getBeansOfType(ContainerRequestFilter.class);
-		Map<String, ContainerResponseFilter> responseFilters = applicationContext.getBeansOfType(ContainerResponseFilter.class);
+		Map<String, ContainerRequestFilter> requestFilters = applicationContext
+				.getBeansOfType(ContainerRequestFilter.class);
+		Map<String, ContainerResponseFilter> responseFilters = applicationContext
+				.getBeansOfType(ContainerResponseFilter.class);
 		Map<String, ExceptionMapper> exceptionMappers = applicationContext.getBeansOfType(ExceptionMapper.class);
 
 		Map<String, Object> tmp = new HashMap<>(resources);
@@ -38,7 +40,13 @@ public class App extends Application implements ServletContextListener {
 		return new HashSet<>(instances.values());
 	}
 
+	@Override
 	public void contextInitialized(ServletContextEvent sce) {
-		logger.info("I am here");
+		logger.info("context initialized");
+	}
+
+	@Override
+	public void contextDestroyed(ServletContextEvent sce) {
+		logger.info("context destroyed");
 	}
 }
