@@ -1,0 +1,46 @@
+plugins {
+    id "java"
+    id "war"
+    id "jacoco"
+    id "com.github.spotbugs" version "5.0.13"
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly "org.slf4j:slf4j-api:2.0.6"
+    compileOnly "jakarta.servlet:jakarta.servlet-api:6.0.0"
+
+    implementation "jakarta.ws.rs:jakarta.ws.rs-api:3.1.0"
+    implementation "org.springframework:spring-context:$springVersion"
+
+    runtimeOnly "org.apache.logging.log4j:log4j-slf4j-impl:2.20.0"
+    runtimeOnly "org.glassfish.jersey.containers:jersey-container-servlet:$jerseyVersion"
+    runtimeOnly "org.glassfish.jersey.ext:jersey-spring6:$jerseyVersion"
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.9.2"
+    testImplementation "org.eclipse.jetty:jetty-server:11.0.8"
+    testImplementation "org.eclipse.jetty:jetty-servlet:11.0.8"
+}
+
+group = "com.gullerya"
+version = "1.0.0"
+description = "JAX-RS template - REST application, based on Spring beans management, with all the infra"
+
+test {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+jacocoTestReport {
+    dependsOn test
+}
+
+spotbugs {
+    effort = "max"
+    reportLevel = "default"
+    ignoreFailures = false
+    excludeFilter = file("spotbugs-exclude.xml")
+}
